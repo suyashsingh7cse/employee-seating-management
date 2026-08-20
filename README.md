@@ -1,11 +1,5 @@
 # Employee Seating Management System
 
-<p align="center">
-  <b>Employee Seating Management System</b><br/>
-  A full-stack web application developed as part of a technical assessment.
-</p>
----
-
 An administrative console for viewing and managing office seat assignments, designed to demonstrate full-stack development, API design, database management, authentication, validation, and AI integration.
 
 The application allows an administrator to manage employees and seating assignments through a React-based dashboard. It also includes a natural-language AI assistant powered by Gemini, allowing supported seating operations to be performed by typing requests instead of manually navigating through the interface.
@@ -13,8 +7,9 @@ The application allows an administrator to manage employees and seating assignme
 Built for a technical assessment using a React + Vite frontend, Flask REST API backend, SQLite database, and Google Gemini for natural-language command interpretation.
 
 ---
-**Live URL:** _add after deploying — see [Deploying to Railway](#deploying-to-railway)_
-**Repository:** _add after pushing — see [Pushing to GitHub](#pushing-to-github)_
+**Live Url:** [View Live Application](https://employee-seating-management-production.up.railway.app)
+
+**Repository:** [GitHub – Employee Seating Management System](https://github.com/suyashsingh7cse/employee-seating-management)
 
 ---
 <p align="center">
@@ -371,11 +366,9 @@ employee-seating-management/
 After creating the GitHub repository:
 
 ```bash
-git clone https://github.com/suyashsingh7cse/YOUR-REPOSITORY-NAME.git
-cd YOUR-REPOSITORY-NAME
+git clone https://github.com/suyashsingh7cse/employee-seating-management.git
+cd employee-seating-management
 ```
-
-Replace `YOUR-REPOSITORY-NAME` with the actual repository name.
 
 ---
 
@@ -632,4 +625,6 @@ Interested in Software Development, Cloud Computing, Full-Stack Development, and
   </a>
 </p>
 
-<p align="center">Built by Suyash Singh</p>
+<p align="center">
+  Built with ❤️ by <a href="https://github.com/suyashsingh7cse">Suyash Singh</a>
+</p>
