@@ -20,7 +20,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "admin")
-    ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "admin")
+    ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "admin123")
 
     GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
     GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
