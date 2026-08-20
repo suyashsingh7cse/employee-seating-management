@@ -9,7 +9,7 @@ def mock_gemini(parsed_response):
 
 
 def test_ai_command_requires_login(client):
-    resp = client.post("/api/ai/command", json={"command": "Move Rahul to B03"})
+    resp = client.post("/api/ai/command", json={"command": "Move Rahul Sharma to B03"})
     assert resp.status_code == 401
 
 
@@ -114,5 +114,5 @@ def test_ai_service_error_surfaces_as_502(admin_client):
     from app.services.ai_service import AIServiceError
 
     with patch("app.routes.ai.interpret_command", side_effect=AIServiceError("boom", 502)):
-        resp = admin_client.post("/api/ai/command", json={"command": "Move Rahul to B03"})
+        resp = admin_client.post("/api/ai/command", json={"command": "Move Rahul Sharma to B03"})
     assert resp.status_code == 502

@@ -3,7 +3,7 @@ import { Sparkles, Loader2, CheckCircle2, XCircle, ArrowRight } from "lucide-rea
 import { api, ApiError } from "../services/api";
 
 const EXAMPLES = [
-  "Move Rahul to B03",
+  "Move Rahul Sharma to B03",
   "Assign Priya Patel to an available seat",
   "Remove John Mathew from his seat",
   "Find an available seat",
@@ -52,7 +52,7 @@ export default function AIAssistantPage({ data }) {
         <input
           value={command}
           onChange={(e) => setCommand(e.target.value)}
-          placeholder="e.g. Move Rahul to B03"
+          placeholder="e.g. Move Rahul Sharma to B03"
           className="flex-1 px-4 py-3 rounded-lg border border-line bg-surface text-sm focus:border-brand"
           disabled={submitting}
         />
