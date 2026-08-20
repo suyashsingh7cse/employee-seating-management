@@ -7,9 +7,11 @@ The application allows an administrator to manage employees and seating assignme
 Built for a technical assessment using a React + Vite frontend, Flask REST API backend, SQLite database, and Google Gemini for natural-language command interpretation.
 
 ---
-**Live Url:** [View Live Application](https://employee-seating-management-production.up.railway.app)
+<p align="center">
 
-**Repository:** [GitHub – Employee Seating Management System](https://github.com/suyashsingh7cse/employee-seating-management)
+🌐 **Live Demo:** [View Application](https://employee-seating-management-production-su07.up.railway.app/) &nbsp;•&nbsp; 💻 **Repository:** [View on GitHub](https://github.com/suyashsingh7cse/employee-seating-management)
+
+</p>
 
 ---
 <p align="center">
@@ -78,8 +80,8 @@ The application uses a React + Vite frontend, Flask backend, SQLite database, an
 The AI assistant supports natural-language commands such as:
 
 ```text
-Move Rahul to B03
-Assign Sumit to an available seat
+Move Rahul Sharma to B03
+Assign Divya Shah to an available seat
 Remove Priya Patel from his seat
 Find an available seat
 ```
@@ -289,7 +291,7 @@ Example request:
 
 ```json
 {
-  "command": "Move Rahul to B03"
+  "command": "Move Rahul Sharma to B03"
 }
 ```
 
@@ -438,14 +440,13 @@ The Vite development server proxies `/api/*` requests to the Flask backend.
 
 ## Demo Credentials
 
-For local evaluation and demonstration:
+For demonstration and evaluation purposes:
 
 ```text
 Username: admin
 Password: admin123
 ```
-
-Use different secure credentials in production through environment variables.
+Note: These credentials are intended only for the technical assessment/demo environment. Production credentials should be configured securely through environment variables.
 
 ---
 
@@ -522,15 +523,12 @@ The project includes `railway.json` and a root production `Dockerfile`.
 ### Deployment Steps
 
 1. Push the repository to GitHub.
-2. Create a Railway project.
+2. Create a new project on Railway.
 3. Select **Deploy from GitHub Repository**.
 4. Select this repository.
-5. Add a persistent volume mounted at:
-
-```text
-/app/instance
-```
-
+5. Configure the required environment variables.
+6. Generate a public domain for the service.
+7. Deploy the application.
 6. Configure:
 
 | Variable | Value |
