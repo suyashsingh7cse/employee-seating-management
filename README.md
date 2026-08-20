@@ -557,13 +557,27 @@ Railway provides the `PORT` environment variable automatically.
 
 ## Screenshots
 
-| Login | Dashboard |
-|---|---|
-| ![Login Page](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) |
+### Login
+Administrator login page for accessing the seating management dashboard.
 
-| AI Assistant | Seating Management |
-|---|---|
-| ![AI Assistant](screenshots/ai-assistant.png) | ![Seating Management](screenshots/seating.png) |
+![Login Page](screenshots/login.png)
+
+### Dashboard
+
+Overview of employees, seat availability, and current office seating status.
+
+![Dashboard](screenshots/dashboard.png)
+
+### AI Assistant
+Use natural-language commands powered by Gemini AI to assign, move, remove employees, or find available seats.
+
+![AI Assistant](screenshots/ai-assistant.png)
+
+### Seating Arrangement
+View and manage the complete office seating arrangement and employee seat assignments.
+
+![Seating Management](screenshots/seating.png)
+
 ---
 
 ## Future Improvements
