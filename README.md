@@ -541,7 +541,7 @@ The project includes `railway.json` and a root production `Dockerfile`.
 | `ADMIN_PASSWORD` | Your secure production password |
 | `DATABASE_PATH` | `/app/instance/seating.db` |
 | `GEMINI_API_KEY` | Your Gemini API key |
-| `GEMINI_MODEL` | `gemini-3.6-flash` |
+| `GEMINI_MODEL` | `gemini-3.1-flash-lite` |
 
 Railway provides the `PORT` environment variable automatically.
 
