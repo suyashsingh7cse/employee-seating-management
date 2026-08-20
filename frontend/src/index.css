@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-ink: #111827;
+  --color-ink-soft: #4b5563;
+  --color-ink-faint: #9ca3af;
+
+  --color-canvas: #f6f7f9;
+  --color-surface: #ffffff;
+  --color-line: #e5e7eb;
+
+  --color-brand: #0d9488;
+  --color-brand-dark: #0f766e;
+  --color-brand-soft: #ccfbf1;
+
+  --color-sidebar: #14181f;
+  --color-sidebar-soft: #8b93a3;
+
+  --color-seat-open: #10b981;
+  --color-seat-open-soft: #ecfdf5;
+  --color-seat-occupied: #64748b;
+  --color-seat-occupied-soft: #f1f5f9;
+  --color-seat-selected: #0d9488;
+  --color-seat-error: #dc2626;
+  --color-seat-error-soft: #fef2f2;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
