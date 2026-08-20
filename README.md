@@ -312,7 +312,6 @@ employee-seating-management/
 ├── railway.json
 ├── LICENSE
 ├── README.md
-│
 ├── backend/
 │   ├── app/
 │   │   ├── __init__.py
@@ -335,6 +334,7 @@ employee-seating-management/
 │   ├── requirements.txt
 │   ├── Dockerfile
 │   └── .env.example
+├── screenshots/
 │
 └── frontend/
     ├── src/
@@ -362,8 +362,6 @@ employee-seating-management/
 - A Google Gemini API key
 
 ### Clone the Repository
-
-After creating the GitHub repository:
 
 ```bash
 git clone https://github.com/suyashsingh7cse/employee-seating-management.git
@@ -400,11 +398,8 @@ ADMIN_PASSWORD=admin123
 DATABASE_PATH=instance/seating.db
 
 GEMINI_API_KEY=your_gemini_api_key
-GEMINI_MODEL=gemini-3.6-flash
+GEMINI_MODEL=gemini-3.1-flash-lite
 ```
-
-Do not commit your real `.env` file or API key.
-
 Seed the database:
 
 ```bash
@@ -562,28 +557,13 @@ Railway provides the `PORT` environment variable automatically.
 
 ## Screenshots
 
-Add screenshots after creating:
+| Login | Dashboard |
+|---|---|
+| ![Login Page](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) |
 
-```text
-docs/images/
-├── login.png
-├── dashboard.png
-├── seating.png
-└── ai-assistant.png
-```
-
-Then use:
-
-```md
-![Login Page](docs/images/login.png)
-
-![Dashboard](docs/images/dashboard.png)
-
-![Seating Management](docs/images/seating.png)
-
-![AI Assistant](docs/images/ai-assistant.png)
-```
-
+| AI Assistant | Seating Management |
+|---|---|
+| ![AI Assistant](screenshots/ai-assistant.png) | ![Seating Management](screenshots/seating.png) |
 ---
 
 ## Future Improvements

@@ -13,7 +13,12 @@ client behavior to explain in an interview.
 import json
 import requests
 
-GEMINI_URL_TEMPLATE = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+
+GEMINI_URL_TEMPLATE = (
+    "https://generativelanguage.googleapis.com/"
+    "v1beta/models/{model}:generateContent"
+)
+
 
 SYSTEM_INSTRUCTION = """You are a command interpreter for an office seating management system.
 Convert the administrator's natural-language request into EXACTLY ONE structured action, as JSON.
@@ -50,14 +55,31 @@ class AIServiceError(Exception):
 def interpret_command(command: str, api_key: str, model: str) -> dict:
     if not api_key:
         raise AIServiceError(
-            "The AI assistant isn't configured yet (missing GEMINI_API_KEY on the server).", 503
+            "The AI assistant isn't configured yet "
+            "(missing GEMINI_API_KEY on the server).",
+            503,
         )
 
     url = GEMINI_URL_TEMPLATE.format(model=model)
-    payload = {
-        "system_instruction": {"parts": [{"text": SYSTEM_INSTRUCTION}]},
-        "contents": [{"role": "user", "parts": [{"text": command}]}],
 
+    payload = {
+        "system_instruction": {
+            "parts": [
+                {
+                    "text": SYSTEM_INSTRUCTION
+                }
+            ]
+        },
+        "contents": [
+            {
+                "role": "user",
+                "parts": [
+                    {
+                        "text": command
+                    }
+                ],
+            }
+        ],
         "generationConfig": {
             "responseMimeType": "application/json",
             "temperature": 0,
@@ -65,26 +87,92 @@ def interpret_command(command: str, api_key: str, model: str) -> dict:
     }
 
     try:
-        resp = requests.post(url, params={"key": api_key}, json=payload, timeout=15)
-    except requests.RequestException:
-        raise AIServiceError("Could not reach the AI service. Try again in a moment.", 502)
-
-    if resp.status_code == 429:
-        raise AIServiceError("The AI service is rate-limited right now. Try again shortly.", 429)
-    if resp.status_code != 200:
-        print("Gemini response:", resp.text)
+        resp = requests.post(
+            url,
+            params={"key": api_key},
+            json=payload,
+            timeout=15,
+        )
+    except requests.RequestException as error:
+        print("Gemini connection error:", error)
         raise AIServiceError(
-        f"The AI service returned an error ({resp.status_code}): {resp.text[:300]}",
-        502,
-    )
+            "Could not reach the AI service. Try again in a moment.",
+            502,
+        )
+
+    # Rate limit / quota error
+    if resp.status_code == 429:
+        print("Gemini rate-limit response:", resp.text)
+        raise AIServiceError(
+            "The AI service is rate-limited right now. Try again shortly.",
+            429,
+        )
+
+    # Any other Gemini API error
+    if resp.status_code != 200:
+        print("Gemini error response:", resp.text)
+        raise AIServiceError(
+            f"The AI service returned an error ({resp.status_code}).",
+            502,
+        )
+
+    # Parse successful Gemini response
     try:
         response_body = resp.json()
-        text = response_body["candidates"][0]["content"]["parts"][0]["text"]
+
+        print("Gemini successful response:")
+        print(json.dumps(response_body, indent=2))
+
+        candidates = response_body.get("candidates", [])
+
+        if not candidates:
+            raise ValueError("No candidates returned by Gemini")
+
+        content = candidates[0].get("content", {})
+        parts = content.get("parts", [])
+
+        text = None
+
+        for part in parts:
+            if isinstance(part, dict) and part.get("text"):
+                text = part["text"].strip()
+                break
+
+        if not text:
+            finish_reason = candidates[0].get(
+                "finishReason",
+                "unknown",
+            )
+            raise ValueError(
+                f"No text found in Gemini response. "
+                f"Finish reason: {finish_reason}"
+            )
+
+        print("Gemini extracted text:", text)
+
         parsed = json.loads(text)
-    except (KeyError, IndexError, TypeError, json.JSONDecodeError):
-        raise AIServiceError("The AI service returned a response we couldn't understand.", 502)
+
+    except (
+        KeyError,
+        IndexError,
+        TypeError,
+        ValueError,
+        json.JSONDecodeError,
+    ) as error:
+        print("Gemini parsing error:", error)
+        print("Raw Gemini response:", resp.text)
+
+        raise AIServiceError(
+            "The AI service returned a response we couldn't understand.",
+            502,
+        )
 
     if not isinstance(parsed, dict) or "action" not in parsed:
-        raise AIServiceError("The AI service returned a response we couldn't understand.", 502)
+        print("Invalid parsed Gemini response:", parsed)
+
+        raise AIServiceError(
+            "The AI service returned a response we couldn't understand.",
+            502,
+        )
 
     return parsed
