@@ -27,10 +27,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-canvas px-4 bg-cover bg-[position:60%_center] md:bg-center"
+    <div className="min-h-screen flex items-center justify-center bg-canvas px-4 bg-cover bg-[40% position:center] md:bg-center"
   style={{
     backgroundImage: `
-      linear-gradient(rgba(10, 14, 18, 0.58), rgba(10, 14, 18, 0.58)),
+      linear-gradient(rgba(10, 14, 18, 0.58), rgba(10, 14, 18, 0.70)),
       url('/office-background.png')
     `,
   }}
