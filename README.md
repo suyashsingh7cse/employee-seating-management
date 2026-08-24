@@ -374,6 +374,8 @@ cd employee-seating-management
 
 ## Backend Setup
 
+For MacOS and Linux activation:
+
 ```bash
 cd backend
 python3 -m venv .venv
